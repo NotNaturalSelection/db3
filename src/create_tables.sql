@@ -73,12 +73,13 @@ create table if not exists bases
 (
     id          int primary key,
     gpu_allowed bool not null,
-    display_id  int  not null references displays,
-    cpu_id      int  not null references cpus,
+    display_id  int  references displays,
+    cpu_id      int  references cpus,
     drive_slots int  not null,
     ram_slots   int  not null,
     part_number int  not null unique references shipments (part_number) on delete cascade,
-    price       int  not null
+    price       int  not null,
+    display_size float4 not null
 );
 
 create table if not exists builds
@@ -108,3 +109,4 @@ create table if not exists orders
     build_id    int         not null references builds,
     quantity    int         not null
 );
+
