@@ -7,3 +7,8 @@ create trigger match_gpu_allowed
     on builds
     for each row execute procedure match_gpu_allowed();
 
+create trigger create_order
+    after insert
+    on orders
+    for each row execute procedure create_order();
+
